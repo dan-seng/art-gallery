@@ -12,7 +12,9 @@ export const WALLHAVEN_CATEGORIES = [
   { id: "cars", label: "Cars & Vehicles", query: "cars" },
   { id: "space", label: "Space & Galaxy", query: "space cosmos" },
   { id: "minimalist", label: "Minimalist", query: "minimalist" },
-  { id: "fantasy", label: "Fantasy", query: "fantasy art" },
+  { id: "comic", label: "Comic", query: "comic superhero marvel dc" },
+  { id: "football", label: "Football", query: "football soccer stadium sports" },
+  { id: "music", label: "Music", query: "music concert band guitar" },
 ];
 
 export const WALLHAVEN_SORT = [

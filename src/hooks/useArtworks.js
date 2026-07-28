@@ -16,12 +16,9 @@ export function useArtworks({ category = "all", query = "", limit = 20 } = {}) {
         else setLoading(true);
         setError(null);
 
-        const fn = query.trim() ? searchArtworks : fetchArtworks;
-        const result = await fn(query.trim() || undefined, {
-          page: pageNum,
-          limit,
-          category: query.trim() ? undefined : category,
-        });
+        const result = query.trim()
+          ? await searchArtworks(query.trim(), { page: pageNum, limit })
+          : await fetchArtworks({ page: pageNum, limit, category });
 
         setArtworks((prev) =>
           append ? [...prev, ...result.artworks] : result.artworks
