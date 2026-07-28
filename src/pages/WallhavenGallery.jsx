@@ -69,6 +69,23 @@ export default function WallhavenGallery() {
           </p>
         </div>
 
+        {/* Category Pills Bar */}
+        <div className="flex flex-wrap gap-2">
+          {WALLHAVEN_CATEGORIES.map((c) => (
+            <button
+              key={c.id}
+              onClick={() => setCategory(c.id)}
+              className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${
+                cat === c.id
+                  ? "bg-gallery-gold text-gallery-black"
+                  : "border border-gallery-border bg-gallery-surface text-gallery-text-muted hover:border-gallery-gold/30 hover:text-gallery-text"
+              }`}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+
         <form onSubmit={handleSearch} className="flex gap-3">
           <div className="relative flex-1">
             <MagnifyingGlass

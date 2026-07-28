@@ -12,6 +12,7 @@ import {
   Palette,
   CalendarBlank,
   ArrowSquareOut,
+  Tag,
 } from "@phosphor-icons/react";
 
 function formatSize(bytes) {
@@ -163,6 +164,22 @@ export default function WallpaperDetail() {
                 Source
               </a>
             </div>
+
+            {wallpaper.category && (
+              <div>
+                <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.15em] text-gallery-text-dim">
+                  Category Tag
+                </p>
+                <button
+                  type="button"
+                  onClick={() => navigate(`/wallpapers?cat=${wallpaper.category.toLowerCase()}`)}
+                  className="inline-flex items-center gap-2 rounded-full border border-gallery-border bg-gallery-surface px-4 py-1.5 text-xs font-medium text-gallery-gold transition-all hover:border-gallery-gold/50 hover:bg-gallery-elevated"
+                >
+                  <Tag size={12} />
+                  Filter by {wallpaper.category}
+                </button>
+              </div>
+            )}
 
             {wallpaper.colors && wallpaper.colors.length > 0 && (
               <div>
