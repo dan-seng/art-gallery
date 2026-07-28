@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/wallhaven-api/:path*",
+      "destination": "https://wallhaven.cc/api/v1/:path*"
+    }
+  ]
+}
