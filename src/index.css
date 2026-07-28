@@ -18,6 +18,20 @@
   --color-gallery-warm: #2a2420;
 }
 
+:root[data-theme="light"],
+html.light {
+  --color-gallery-black: #f8fafc;
+  --color-gallery-surface: #ffffff;
+  --color-gallery-elevated: #f1f5f9;
+  --color-gallery-border: #e2e8f0;
+  --color-gallery-gold: #b8860b;
+  --color-gallery-gold-dim: #9e7b1d;
+  --color-gallery-text: #0f172a;
+  --color-gallery-text-muted: #475569;
+  --color-gallery-text-dim: #64748b;
+  --color-gallery-warm: #ffffff;
+}
+
 @layer base {
   * {
     scrollbar-width: thin;
