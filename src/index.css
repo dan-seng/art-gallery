@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --font-amharic: "Abyssinica SIL", "Nyala", "MetaApp", sans-serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-gallery-black: #0a0a0a;
+  --color-gallery-surface: #141210;
+  --color-gallery-elevated: #1e1b18;
+  --color-gallery-border: #2a2621;
+  --color-gallery-gold: #d4a853;
+  --color-gallery-gold-dim: #b8923f;
+  --color-gallery-text: #f5f0e8;
+  --color-gallery-text-muted: #9a9389;
+  --color-gallery-text-dim: #8a8279;
+  --color-gallery-warm: #2a2420;
+}
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gallery-border) transparent;
+  }
+
+  ::selection {
+    background-color: var(--color-gallery-gold);
+    color: var(--color-gallery-black);
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: var(--color-gallery-black);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  img {
+    color-scheme: dark;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gallery-gold);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-amharic {
+    font-family: var(--font-amharic);
+  }
+
+  .masonry {
+    columns: 2;
+    column-gap: 0.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .masonry {
+      columns: 2;
+      column-gap: 1rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .masonry {
+      columns: 3;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .masonry {
+      columns: 4;
+      column-gap: 1.25rem;
+    }
+  }
+
+  .masonry > * {
+    break-inside: avoid;
+    margin-bottom: 0.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .masonry > * {
+      margin-bottom: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .masonry > * {
+      margin-bottom: 1.25rem;
+    }
+  }
+
+  .gallery-glow {
+    box-shadow:
+      0 0 0 1px rgba(212, 168, 83, 0.08),
+      0 0 80px -20px rgba(212, 168, 83, 0.06);
+  }
+
+  .art-shadow {
+    box-shadow:
+      0 4px 24px -4px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(255, 255, 255, 0.03);
+  }
+}
