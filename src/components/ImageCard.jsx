@@ -1,0 +1,64 @@
+import { Link } from "react-router-dom";
+import { motion, useReducedMotion } from "motion/react";
+import { Download } from "@phosphor-icons/react";
+
+import { downloadImage } from "../utils/download";
+
+export default function ImageCard({ artwork, index = 0 }) {
+  const reduce = useReducedMotion();
+
+  const handleDownload = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const filename = `${(artwork.title || "wallpaper").toLowerCase().replace(/[^a-z0-9]+/g, "-")}.jpg`;
+    downloadImage(artwork.wallpaper || artwork.large, filename);
+  };
+
+  return (
+    <motion.div
+      initial={reduce ? false : { opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{
+        duration: 0.6,
+        delay: Math.min(index * 0.05, 0.3),
+        ease: [0.16, 1, 0.3, 1],
+      }}
+    >
+      <Link
+        to={`/artwork/${artwork.id}`}
+        className="group relative block overflow-hidden rounded-xl bg-gallery-surface art-shadow"
+      >
+        <div className="relative aspect-[3/4] overflow-hidden">
+          <img
+            src={artwork.thumbnail}
+            alt={artwork.title}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100" />
+
+          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 opacity-0 transition-opacity duration-400 group-hover:opacity-100">
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm font-medium text-white">
+                {artwork.title}
+              </p>
+              <p className="truncate text-xs text-white/60">
+                {artwork.artist}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={handleDownload}
+              className="ml-2 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gallery-gold/90 text-gallery-black transition-colors hover:bg-gallery-gold"
+              title="Download wallpaper"
+            >
+              <Download size={14} weight="bold" />
+            </button>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
