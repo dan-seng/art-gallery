@@ -7,14 +7,14 @@ export const WALLHAVEN_CATEGORIES = [
   { id: "general", label: "General", flag: "100" },
   { id: "anime", label: "Anime", flag: "010" },
   { id: "people", label: "People", flag: "001" },
-  { id: "cyberpunk", label: "Cyberpunk", query: "cyberpunk" },
-  { id: "nature", label: "Nature", query: "nature landscape" },
-  { id: "cars", label: "Cars & Vehicles", query: "cars" },
-  { id: "space", label: "Space & Galaxy", query: "space cosmos" },
-  { id: "minimalist", label: "Minimalist", query: "minimalist" },
   { id: "comic", label: "Comic", query: "comic superhero marvel dc" },
   { id: "football", label: "Football", query: "football soccer stadium sports" },
   { id: "music", label: "Music", query: "music concert band guitar" },
+  { id: "cyberpunk", label: "Cyberpunk", query: "cyberpunk" },
+  { id: "nature", label: "Nature", query: "nature landscape" },
+  { id: "cars", label: "Cars & Vehicles", query: "cars sports car" },
+  { id: "space", label: "Space & Galaxy", query: "space cosmos" },
+  { id: "minimalist", label: "Minimalist", query: "minimalist" },
 ];
 
 export const WALLHAVEN_SORT = [
@@ -352,7 +352,7 @@ export async function searchWallhaven({
 
   // 2. Try Unsplash Live HD Engine fallback
   try {
-    const unsplashResults = await fetchUnsplashFallback(query, page, limit);
+    const unsplashResults = await fetchUnsplashFallback(searchQuery || query, page, limit);
     return {
       wallpapers: unsplashResults,
       total: unsplashResults.length * 5,
@@ -367,7 +367,7 @@ export async function searchWallhaven({
   }
 
   // 3. Fallback to Local Categorized Store
-  const qLower = query.toLowerCase().trim();
+  const qLower = (searchQuery || query).toLowerCase().trim();
   const filtered = qLower
     ? FALLBACK_WALLPAPERS.filter(
         (w) =>
