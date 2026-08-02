@@ -13,10 +13,10 @@ export default function CategoryPills({ categories, active, basePath = "/categor
               ? navigate("/")
               : navigate(`${basePath}/${cat.id}`)
           }
-          className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${
+          className={`rounded-full px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] transition-all ${
             active === cat.id
-              ? "bg-gallery-gold text-gallery-black"
-              : "border border-gallery-border bg-gallery-surface text-gallery-text-muted hover:border-gallery-gold/30 hover:text-gallery-text"
+              ? "bg-darkroom-safelight text-darkroom-print"
+              : "border border-darkroom-border bg-darkroom-surface text-darkroom-text-muted hover:border-darkroom-safelight/40 hover:text-darkroom-text"
           }`}
         >
           {cat.label}

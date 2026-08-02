@@ -21,42 +21,59 @@ export default function ImageCard({ artwork, index = 0 }) {
       viewport={{ once: true, amount: 0.1 }}
       transition={{
         duration: 0.6,
-        delay: Math.min(index * 0.05, 0.3),
+        delay: Math.min(index * 0.04, 0.3),
         ease: [0.16, 1, 0.3, 1],
       }}
     >
       <Link
         to={`/artwork/${artwork.id}`}
-        className="group relative block overflow-hidden rounded-xl bg-gallery-surface art-shadow"
+        className="group block print-sheet relative rounded-[3px] p-2 pb-1.5 transition-transform duration-500 ease-out hover:-translate-y-1"
       >
-        <div className="relative aspect-[3/4] overflow-hidden">
+        <div className="relative overflow-hidden rounded-[2px] bg-darkroom-elevated">
           <img
             src={artwork.thumbnail}
             alt={artwork.title}
             loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            style={{ aspectRatio: "3/4" }}
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100" />
+          <div className="pointer-events-none absolute inset-0 transition-colors duration-500 group-hover:bg-darkroom-safelight/10" />
+        </div>
 
-          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 opacity-0 transition-opacity duration-400 group-hover:opacity-100">
-            <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-medium text-white">
-                {artwork.title}
-              </p>
-              <p className="truncate text-xs text-white/60">
-                {artwork.artist}
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={handleDownload}
-              className="ml-2 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gallery-gold/90 text-gallery-black transition-colors hover:bg-gallery-gold"
-              title="Download wallpaper"
-            >
-              <Download size={14} weight="bold" />
-            </button>
+        <div className="mt-1.5 px-0.5">
+          <div className="flex items-baseline justify-between gap-2">
+            <span className="truncate font-mono text-[10px] uppercase tracking-[0.12em] text-darkroom-print">
+              NO.{String(index + 1).padStart(3, "0")}
+              <span className="text-darkroom-print-muted">
+                {" "}
+                · {artwork.medium || "Work on paper"}
+              </span>
+            </span>
+            <span className="shrink-0 font-mono text-[10px] text-darkroom-print-muted">
+              {artwork.date}
+            </span>
           </div>
+          <div className="mt-0.5 flex items-baseline justify-between gap-2">
+            <span className="truncate font-mono text-[10px] uppercase tracking-[0.12em] text-darkroom-print-muted">
+              {artwork.title}
+            </span>
+            <span className="shrink-0 truncate font-mono text-[10px] text-darkroom-print-muted">
+              {artwork.artist}
+            </span>
+          </div>
+        </div>
+
+        <div className="absolute right-2.5 top-2.5 opacity-0 transition-opacity duration-400 group-hover:opacity-100">
+          <button
+            type="button"
+            onClick={handleDownload}
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-darkroom-safelight text-darkroom-print shadow-lg shadow-darkroom-ink/40 transition-colors hover:bg-darkroom-safelight-dim"
+            title="Download wallpaper"
+            aria-label="Download wallpaper"
+          >
+            <Download size={14} weight="bold" />
+          </button>
         </div>
       </Link>
     </motion.div>
