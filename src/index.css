@@ -16,6 +16,21 @@
   --color-gallery-text-muted: #9a9389;
   --color-gallery-text-dim: #8a8279;
   --color-gallery-warm: #2a2420;
+
+  --color-darkroom-ink: #0a0808;
+  --color-darkroom-surface: #14100d;
+  --color-darkroom-elevated: #1e1813;
+  --color-darkroom-border: #2b241d;
+  --color-darkroom-safelight: #e86a3a;
+  --color-darkroom-safelight-dim: #c2541f;
+  --color-darkroom-safelight-text: #e86a3a;
+  --color-darkroom-paper: #efe6d6;
+  --color-darkroom-text: #f3eee4;
+  --color-darkroom-text-muted: #a89f92;
+  --color-darkroom-text-dim: #8e8679;
+  --color-darkroom-metal: #3a332b;
+  --color-darkroom-print: #1c1710;
+  --color-darkroom-print-muted: rgba(28, 23, 16, 0.66);
 }
 
 :root[data-theme="light"],
@@ -30,22 +45,35 @@ html.light {
   --color-gallery-text-muted: #475569;
   --color-gallery-text-dim: #64748b;
   --color-gallery-warm: #ffffff;
+
+  --color-darkroom-ink: #f4efe6;
+  --color-darkroom-surface: #ffffff;
+  --color-darkroom-elevated: #e9e2d4;
+  --color-darkroom-border: #cfc4ae;
+  --color-darkroom-safelight: #c9651f;
+  --color-darkroom-safelight-dim: #a84a12;
+  --color-darkroom-safelight-text: #9c4313;
+  --color-darkroom-paper: #fbf7ee;
+  --color-darkroom-text: #17130e;
+  --color-darkroom-text-muted: #4c4436;
+  --color-darkroom-text-dim: #6f675a;
+  --color-darkroom-metal: #8a8172;
 }
 
 @layer base {
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-gallery-border) transparent;
+    scrollbar-color: var(--color-darkroom-border) transparent;
   }
 
   ::selection {
-    background-color: var(--color-gallery-gold);
-    color: var(--color-gallery-black);
+    background-color: var(--color-darkroom-safelight);
+    color: var(--color-darkroom-print);
   }
 
   body {
     overflow-x: hidden;
-    background-color: var(--color-gallery-black);
+    background-color: var(--color-darkroom-ink);
     font-family: "JetBrains Mono", ui-monospace, monospace;
   }
 
@@ -54,7 +82,7 @@ html.light {
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-gallery-gold);
+    outline: 2px solid var(--color-darkroom-safelight);
     outline-offset: 2px;
   }
 }
@@ -120,5 +148,49 @@ html.light {
     box-shadow:
       0 4px 24px -4px rgba(0, 0, 0, 0.5),
       0 0 0 1px rgba(255, 255, 255, 0.03);
+  }
+
+  .darkroom-aura {
+    background:
+      radial-gradient(1200px 500px at 18% -10%, var(--color-darkroom-safelight) 0%, transparent 62%),
+      radial-gradient(900px 420px at 85% -12%, var(--color-darkroom-safelight) 0%, transparent 58%);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .darkroom-aura-weak {
+    background:
+      radial-gradient(1000px 420px at 22% -8%, var(--color-darkroom-safelight) 0%, transparent 60%),
+      radial-gradient(800px 380px at 82% -10%, var(--color-darkroom-safelight) 0%, transparent 55%);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .print-sheet {
+    background: linear-gradient(180deg, var(--color-darkroom-paper) 0%, var(--color-darkroom-paper) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-darkroom-metal) 30%, transparent);
+    box-shadow:
+      0 18px 40px -18px rgba(0, 0, 0, 0.6),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  }
+
+  .print-shadow {
+    box-shadow:
+      0 16px 40px -16px rgba(0, 0, 0, 0.55),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+  }
+
+  .safelight-glow {
+    box-shadow:
+      0 0 0 1px var(--color-darkroom-safelight),
+      0 0 44px -10px var(--color-darkroom-safelight);
+  }
+
+  .darkroom-vignette {
+    background: radial-gradient(
+      140% 120% at 50% 20%,
+      transparent 40%,
+      var(--color-darkroom-ink) 78%
+    );
   }
 }
