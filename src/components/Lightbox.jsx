@@ -31,13 +31,13 @@ export default function Lightbox({ artwork, onClose, onPrev, onNext }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.25 }}
-        className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0a0a0a]/98 backdrop-blur-md"
+        className="fixed inset-0 z-[100] flex items-center justify-center bg-darkroom-ink/98 backdrop-blur-md"
         onClick={onClose}
       >
         {/* Prominent Back Button Top Left */}
         <button
           onClick={onClose}
-          className="absolute left-5 top-5 z-20 flex items-center gap-2 rounded-full border border-white/10 bg-black/60 px-4 py-2 text-xs font-medium text-white backdrop-blur-md transition-all hover:border-gallery-gold/50 hover:bg-black/80 hover:text-gallery-gold md:text-sm"
+          className="absolute left-5 top-5 z-20 flex items-center gap-2 rounded-full border border-white/10 bg-black/60 px-4 py-2 text-xs font-medium text-white backdrop-blur-md transition-all hover:border-darkroom-safelight/50 hover:bg-black/80 hover:text-darkroom-safelight-text md:text-sm"
         >
           <ArrowLeft size={16} />
           Back to Gallery
@@ -46,7 +46,7 @@ export default function Lightbox({ artwork, onClose, onPrev, onNext }) {
         {/* Close Button Top Right */}
         <button
           onClick={onClose}
-          className="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/60 text-gallery-text-muted backdrop-blur-md transition-colors hover:bg-white/10 hover:text-gallery-text"
+          className="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/60 text-darkroom-text-muted backdrop-blur-md transition-colors hover:bg-white/10 hover:text-darkroom-text"
           aria-label="Close Preview"
         >
           <X size={18} />
@@ -58,7 +58,7 @@ export default function Lightbox({ artwork, onClose, onPrev, onNext }) {
               e.stopPropagation();
               onPrev();
             }}
-            className="absolute left-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-gallery-text-muted transition-colors hover:bg-white/10 hover:text-gallery-text"
+            className="absolute left-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-darkroom-text-muted transition-colors hover:bg-white/10 hover:text-darkroom-text"
           >
             <ArrowLeft size={18} />
           </button>
@@ -70,7 +70,7 @@ export default function Lightbox({ artwork, onClose, onPrev, onNext }) {
               e.stopPropagation();
               onNext();
             }}
-            className="absolute right-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-gallery-text-muted transition-colors hover:bg-white/10 hover:text-gallery-text md:right-8"
+            className="absolute right-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-darkroom-text-muted transition-colors hover:bg-white/10 hover:text-darkroom-text md:right-8"
           >
             <ArrowRight size={18} />
           </button>
@@ -86,16 +86,16 @@ export default function Lightbox({ artwork, onClose, onPrev, onNext }) {
           <img
             src={artwork.large}
             alt={artwork.title}
-            className="max-h-[80vh] rounded-lg object-contain art-shadow"
+            className="max-h-[80vh] rounded-lg object-contain print-shadow"
           />
         </motion.div>
 
         <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-5">
           <div className="text-center">
-            <p className="text-sm font-medium text-gallery-text">
+            <p className="text-sm font-medium text-darkroom-text">
               {artwork.title}
             </p>
-            <p className="text-xs text-gallery-text-muted">{artwork.artist}</p>
+            <p className="text-xs text-darkroom-text-muted">{artwork.artist}</p>
           </div>
           <button
             type="button"
@@ -104,7 +104,7 @@ export default function Lightbox({ artwork, onClose, onPrev, onNext }) {
               const filename = `${(artwork.title || "wallpaper").toLowerCase().replace(/[^a-z0-9]+/g, "-")}.jpg`;
               downloadImage(artwork.wallpaper || artwork.large, filename);
             }}
-            className="flex h-9 items-center gap-2 rounded-lg bg-gallery-gold px-4 text-sm font-semibold text-gallery-black transition-colors hover:bg-gallery-gold-dim"
+            className="flex h-9 items-center gap-2 rounded-[4px] bg-darkroom-safelight px-4 text-sm font-semibold text-darkroom-print transition-colors hover:bg-darkroom-safelight-dim"
           >
             <Download size={14} weight="bold" />
             Download

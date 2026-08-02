@@ -1,9 +1,9 @@
 /*
- * THESIS: Art is the hero, not the interface. Ethiopian Gallery Night — warm spotlights on art in a dark gallery space, Amharic typography as the brand voice.
- * OWN-WORLD: Near-black ground (#0a0a0a), warm gold accent (#d4a853), off-white text (#f5f0e8). Abyssinica SIL + Outfit + JetBrains Mono. Minimal chrome, maximum art.
- * STORY: Visitor discovers art that resonates, previews it full-screen, downloads it as wallpaper. The browsing experience itself is beautiful.
- * FIRST VIEWPORT: Full-bleed featured artwork with Amharic title overlay. Art fills the frame, navigation recedes.
- * FORM: Experience mode gallery. Masonry grid with staggered reveal. Lightbox with keyboard nav. Category pills for filtering.
+ * THESIS: Art is the hero, not the interface. The Darkroom — a nocturnal print lab where every wallpaper and artwork is a developed frame on a contact sheet. Amharic typography as the brand voice.
+ * OWN-WORLD: Silver-black ground (#0a0808), safelight amber accent (#e86a3a), photo-paper cream (#efe6d6). Abyssinica SIL + Outfit + JetBrains Mono. Minimal chrome, maximum print.
+ * STORY: Visitor discovers art that resonates, previews it as a developed print, downloads it as wallpaper.
+ * FIRST VIEWPORT: Aura-lit masthead with the Amharic heading and a paper Print Record card. Prints fill the contact sheet.
+ * FORM: Experience mode gallery. Masonry contact-sheet grid with staggered reveal. Enlarger detail view. Category pills for filtering.
  */
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ReactLenis } from "lenis/react";
@@ -20,7 +20,7 @@ export default function App() {
   return (
     <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
       <BrowserRouter>
-        <div className="flex min-h-[100dvh] flex-col bg-gallery-black">
+        <div className="flex min-h-[100dvh] flex-col bg-darkroom-ink">
           <Header />
           <main className="flex-1">
             <Routes>

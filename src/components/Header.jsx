@@ -41,11 +41,11 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gallery-border/50 bg-gallery-black/80 backdrop-blur-xl transition-colors duration-300">
+    <header className="sticky top-0 z-50 border-b border-darkroom-border/50 bg-darkroom-ink/80 backdrop-blur-xl transition-colors duration-300">
       <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 md:px-8">
         <div className="flex items-center gap-6">
           <Link to="/" className="flex items-center gap-3 group">
-            <span className="font-amharic text-xl font-normal tracking-wide text-gallery-gold transition-colors group-hover:text-gallery-gold-dim">
+            <span className="font-amharic text-xl font-normal tracking-wide text-darkroom-safelight-text transition-colors group-hover:text-darkroom-safelight">
               ብስብስ
             </span>
           </Link>
@@ -71,7 +71,7 @@ export default function Header() {
                 value={searchVal}
                 onChange={(e) => setSearchVal(e.target.value)}
                 placeholder={isWallpapers ? "Search wallpapers..." : "Search artworks..."}
-                className="h-9 w-48 rounded-lg border border-gallery-border bg-gallery-surface px-3 text-sm text-gallery-text placeholder:text-gallery-text-dim focus:outline-none focus:ring-1 focus:ring-gallery-gold/30 md:w-64"
+                className="h-9 w-48 rounded-[4px] border border-darkroom-border bg-darkroom-surface px-3 text-sm text-darkroom-text placeholder:text-darkroom-text-dim focus:outline-none focus:ring-1 focus:ring-darkroom-safelight/40 md:w-64"
               />
               <button
                 type="button"
@@ -79,7 +79,7 @@ export default function Header() {
                   setSearchOpen(false);
                   setSearchVal("");
                 }}
-                className="text-gallery-text-muted hover:text-gallery-text"
+                className="text-darkroom-text-muted hover:text-darkroom-text"
               >
                 &#x2715;
               </button>
@@ -87,7 +87,7 @@ export default function Header() {
           ) : (
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex h-9 items-center gap-2 rounded-lg border border-gallery-border bg-gallery-surface px-3 text-sm text-gallery-text-muted transition-colors hover:border-gallery-gold/20 hover:text-gallery-text"
+              className="flex h-9 items-center gap-2 rounded-[4px] border border-darkroom-border bg-darkroom-surface px-3 text-sm text-darkroom-text-muted transition-colors hover:border-darkroom-safelight/40 hover:text-darkroom-text"
             >
               <MagnifyingGlass size={14} />
               <span className="hidden md:inline">Search</span>
@@ -97,7 +97,7 @@ export default function Header() {
           <button
             type="button"
             onClick={toggleTheme}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-gallery-border bg-gallery-surface text-gallery-text-muted transition-colors hover:border-gallery-gold/30 hover:text-gallery-gold"
+            className="flex h-9 w-9 items-center justify-center rounded-[4px] border border-darkroom-border bg-darkroom-surface text-darkroom-text-muted transition-colors hover:border-darkroom-safelight/40 hover:text-darkroom-safelight-text"
             title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
             aria-label="Toggle theme mode"
           >
@@ -115,8 +115,8 @@ function SourceLink({ to, active, children }) {
       to={to}
       className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
         active
-          ? "bg-gallery-gold/10 text-gallery-gold"
-          : "text-gallery-text-muted hover:bg-gallery-elevated hover:text-gallery-text"
+          ? "bg-darkroom-safelight/10 text-darkroom-safelight-text"
+          : "text-darkroom-text-muted hover:bg-darkroom-elevated hover:text-darkroom-text"
       }`}
     >
       {children}
